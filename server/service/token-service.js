@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = "jwt-secret-key";
 const JWT_REFRESH_SECRET_KEY = "jwt-secret-key";
-const tokenModel = requre("../models/tokenModal");
+const tokenModel = require("../models/tokenModal");
 
 class TokenService {
-  generateToken() {
+  generateToken(payload) {
     const accesToken = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: "30m" });
     const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET_KEY, {
       expiresIn: "30d",
